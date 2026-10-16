@@ -1,4 +1,4 @@
-/* StepUp OS — Master Logic & Production Routing Engine */
+  /* StepUp OS — Master Logic & Production Routing Engine */
 
 // Local Data Store (Admin Managed State)
 const StepUpState = {
@@ -26,7 +26,6 @@ function adminAddStudent(name, email, roll, studentClass) {
     return false;
   }
   
-  // Check duplicate
   const exists = StepUpState.students.some(s => s.email.toLowerCase() === email.toLowerCase());
   if (exists) {
     alert("Student with this Gmail is already registered!");
@@ -81,7 +80,6 @@ function handleStepUpLogin(userEmail) {
 
   const cleanEmail = userEmail.trim().toLowerCase();
 
-  // Check if Admin
   if (cleanEmail === "stepup.user.contact@gmail.com" || cleanEmail.includes("admin")) {
     StepUpState.currentUser = { email: cleanEmail, role: "admin" };
     alert("Welcome, Admin! Redirecting to Admin Leadership Console.");
@@ -89,7 +87,6 @@ function handleStepUpLogin(userEmail) {
     return;
   }
 
-  // Check if Registered Student
   const matchedStudent = StepUpState.students.find(s => s.email.toLowerCase() === cleanEmail);
   if (matchedStudent) {
     StepUpState.currentUser = { ...matchedStudent, role: "student" };
@@ -98,7 +95,6 @@ function handleStepUpLogin(userEmail) {
     return;
   }
 
-  // Check if Teacher
   const matchedTeacher = StepUpState.teachers.find(t => t.email.toLowerCase() === cleanEmail);
   if (matchedTeacher) {
     StepUpState.currentUser = { ...matchedTeacher, role: "teacher" };
@@ -107,7 +103,6 @@ function handleStepUpLogin(userEmail) {
     return;
   }
 
-  // Fallback / Parent perspective
   alert("Email verified. Accessing Parent/General Student Portal.");
   switchPortalView('parent');
 }
@@ -178,9 +173,63 @@ function generateRealFeeReceipt(studentName, amount, invoiceNo) {
   receiptWindow.document.close();
 }
 
+// 5. LIVE CHARTS INITIALIZATION ENGINE
+function initStepUpCharts() {
+  const attendanceCtx = document.getElementById('attendanceChart');
+  if (attendanceCtx) {
+    new Chart(attendanceCtx, {
+      type: 'line',
+      data: {
+        labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        datasets: [{
+          label: 'Attendance %',
+          data: [92, 94, 91, 95, 96, 94.7],
+          borderColor: '#00f2fe',
+          backgroundColor: 'rgba(0, 242, 254, 0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' } },
+          y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }, min: 85, max: 100 }
+        }
+      }
+    });
+  }
+
+  const workloadCtx = document.getElementById('workloadChart');
+  if (workloadCtx) {
+    new Chart(workloadCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Balanced', 'Near Capacity', 'Substitute Needed'],
+        datasets: [{
+          data: [65, 25, 10],
+          backgroundColor: ['#00f2fe', '#007bff', '#ffc107'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom', labels: { color: '#ccc', font: { size: 10 } } } }
+      }
+    });
+  }
+}
+
+// Modal helper
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = 'flex';
+}
+
 // Initial UI Setup on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
   renderAdminStudentList();
-  console.log("StepUp OS Core Logic Loaded Successfully.");
+  setTimeout(initStepUpCharts, 300);
+  console.log("StepUp OS Core Engine & Interactive Analytics Fully Initialized.");
 });
-    
