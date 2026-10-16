@@ -3,120 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StepUp OS — Modern School Management System</title>
+  <title>StepUp OS — Modern School Operating System</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <i class="fa-solid fa-graduation-cap" style="font-size:1.8rem; color:var(--accent-cyan);"></i>
-      <h2 style="font-weight:800; tracking-wide:1px;">StepUp <span style="color:var(--accent-cyan);">OS</span></h2>
+  <!-- Top Announcement Ticker Bar -->
+  <div style="background: rgba(0, 242, 254, 0.08); border-bottom: 1px solid var(--border-glass); padding: 6px 16px; font-size: 0.8rem; color: var(--accent-cyan); display: flex; justify-content: space-between; align-items: center;">
+    <span><i class="fa-solid fa-bullhorn"></i> <strong>EDUCATION WIRE:</strong> CBSE 2026-27 Competency Framework Updated • SOF Olympiad Registrations Active</span>
+    <span style="color: var(--text-muted); font-size: 0.75rem;">StepUp OS v2.4 Active</span>
+  </div>
+
+  <!-- Main Navbar -->
+  <nav class="navbar" style="padding: 16px 32px; background: rgba(7, 9, 14, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; sticky: top; z-index: 100;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <i class="fa-solid fa-cubes" style="font-size: 1.8rem; color: var(--accent-cyan);"></i>
+      <h2 style="font-weight: 800; tracking-wide: 1px; margin: 0;">STEPUP<span style="color: var(--accent-cyan);">//OS</span></h2>
     </div>
-    <div style="display:flex; gap:16px;">
-      <button class="btn-outline" onclick="openModal('guide-modal')"><i class="fa-solid fa-book-open"></i> Operations Guide</button>
-      <button class="btn-primary" onclick="openModal('auth-modal')">Portal Login <i class="fa-solid fa-arrow-right"></i></button>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 8px; padding: 6px 12px; display: flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted); font-size: 0.85rem;"></i>
+        <input type="text" id="globalSearch" placeholder="Search people, classes, tools..." style="background: transparent; border: none; color: white; outline: none; font-size: 0.85rem; width: 180px;">
+        <span style="font-size: 0.7rem; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; color: var(--text-muted);">⌘K</span>
+      </div>
+      <button class="btn-primary" onclick="openModal('auth-modal')" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-fab fa-google"></i> Google Sign-In</button>
     </div>
   </nav>
 
-  <!-- Hero Landing Section -->
-  <main style="max-width:1200px; margin:60px auto; padding:0 24px;">
-    <section class="glass-panel" style="padding:60px 40px; text-align:center; margin-bottom:40px;">
-      <span style="background:rgba(0,242,254,0.1); color:var(--accent-cyan); padding:6px 16px; border-radius:20px; font-size:0.85rem; font-weight:600; border:1px solid var(--border-neon);">NEXT-GEN SCHOOL OS</span>
-      <h1 style="font-size:3rem; margin:20px 0; font-weight:800; line-height:1.2;">Automate Campus Operations <br>With Unmatched Precision</h1>
-      <p style="color:var(--text-muted); max-width:650px; margin:0 auto 30px auto; font-size:1.1rem;">
-        Integrated administration, automated fee collection, smart role routing, and independent B2C student performance tracking.
-      </p>
-      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
-        <button class="btn-primary" onclick="openModal('auth-modal')">Get Started</button>
-        <button class="btn-outline" onclick="openModal('founders-modal')">Meet the Founders</button>
+  <!-- Dynamic Portal Perspective Views -->
+  <main style="max-width: 1280px; margin: 30px auto; padding: 0 24px; min-height: 80vh;">
+
+    <!-- 1. ADMIN VIEW -->
+    <section id="adminView" style="display: block;">
+      <div style="margin-bottom: 24px;">
+        <span style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Leadership Console</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 4px;">The whole school, visible and actionable.</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Operations snapshot • Active campus monitoring</p>
+      </div>
+
+      <!-- Admin Stat Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 30px;">
+        <div class="glass-panel" style="padding: 20px;">
+          <i class="fa-solid fa-users" style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 10px;"></i>
+          <h2 style="font-size: 1.8rem; margin: 0;">2,486</h2>
+          <span style="color: var(--text-muted); font-size: 0.85rem;">Total Enrolled Students</span>
+        </div>
+        <div class="glass-panel" style="padding: 20px;">
+          <i class="fa-solid fa-chalkboard-user" style="color: var(--accent-blue); font-size: 1.4rem; margin-bottom: 10px;"></i>
+          <h2 style="font-size: 1.8rem; margin: 0;">164</h2>
+          <span style="color: var(--text-muted); font-size: 0.85rem;">Total Active Faculty</span>
+        </div>
+        <div class="glass-panel" style="padding: 20px;">
+          <i class="fa-solid fa-calendar-check" style="color: #ffc107; font-size: 1.4rem; margin-bottom: 10px;"></i>
+          <h2 style="font-size: 1.8rem; margin: 0;">94.7%</h2>
+          <span style="color: var(--text-muted); font-size: 0.85rem;">Daily Attendance Average</span>
+        </div>
+        <div class="glass-panel" style="padding: 20px;">
+          <i class="fa-solid fa-indian-rupee-sign" style="color: #28a745; font-size: 1.4rem; margin-bottom: 10px;"></i>
+          <h2 style="font-size: 1.8rem; margin: 0;">₹1.84 Cr</h2>
+          <span style="color: var(--text-muted); font-size: 0.85rem;">Fee Collection YTD</span>
+        </div>
+      </div>
+
+      <!-- Admin Real Control Panel (Add Student Email) -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div class="glass-panel" style="padding: 24px;">
+          <h3><i class="fa-solid fa-user-plus" style="color: var(--accent-cyan);"></i> Student Email Onboarding</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Add student Gmail IDs for automatic Google OAuth role routing.</p>
+
+          <form onsubmit="event.preventDefault(); const n = document.getElementById('sName').value; const e = document.getElementById('sEmail').value; const r = document.getElementById('sRoll').value; const c = document.getElementById('sClass').value; adminAddStudent(n,e,r,c); this.reset();">
+            <input type="text" id="sName" placeholder="Full Student Name" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 6px; color: white;">
+            <input type="email" id="sEmail" placeholder="Student Gmail Address" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 6px; color: white;">
+            <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+              <input type="text" id="sRoll" placeholder="Roll No" style="width: 50%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 6px; color: white;">
+              <input type="text" id="sClass" placeholder="Class (e.g., XI-A)" style="width: 50%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 6px; color: white;">
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;">Add Student to Database</button>
+          </form>
+        </div>
+
+        <div class="glass-panel" style="padding: 24px;">
+          <h3><i class="fa-solid fa-list-check" style="color: var(--accent-cyan);"></i> Registered Student Gmails</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Active student entries in local state:</p>
+          <div id="adminStudentList" style="max-height: 220px; overflow-y: auto;"></div>
+        </div>
       </div>
     </section>
 
-    <!-- Role Selection Cards -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
-      <div class="glass-panel" style="padding:28px;">
-        <i class="fa-solid fa-user-shield" style="font-size:2rem; color:var(--accent-cyan); margin-bottom:16px;"></i>
-        <h3 style="margin-bottom:8px;">Admin Console</h3>
-        <p style="color:var(--text-muted); font-size:0.9rem;">Bulk Excel onboarding, financial audits, and receipt generation.</p>
+    <!-- 2. TEACHER VIEW -->
+    <section id="teacherView" style="display: none;">
+      <div style="margin-bottom: 24px;">
+        <span style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Faculty Workspace</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 4px;">Teach first. Let system handle repetition.</h1>
       </div>
-      <div class="glass-panel" style="padding:28px;">
-        <i class="fa-solid fa-chalkboard-user" style="font-size:2rem; color:var(--accent-blue); margin-bottom:16px;"></i>
-        <h3 style="margin-bottom:8px;">Teacher Portal</h3>
-        <p style="color:var(--text-muted); font-size:0.9rem;">Attendance management, marksheets, and parent communication.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <div class="glass-panel" style="padding: 20px;">
+          <h4><i class="fa-solid fa-microphone" style="color: var(--accent-cyan);"></i> Voice-to-Text Grade Entry</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">Speak student names & marks directly into marksheets.</p>
+          <button class="btn-outline" style="margin-top: 10px;" onclick="alert('Microphone listening activated...')">Start Voice Entry</button>
+        </div>
+        <div class="glass-panel" style="padding: 20px;">
+          <h4><i class="fa-solid fa-file-contract" style="color: var(--accent-purple);"></i> OCR Paper Scanner</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">Digitize physical attendance registers & answer keys.</p>
+          <button class="btn-outline" style="margin-top: 10px;" onclick="alert('OCR Camera Initialized.')">Open Scanner</button>
+        </div>
       </div>
-      <div class="glass-panel" style="padding:28px;">
-        <i class="fa-solid fa-user-graduate" style="font-size:2rem; color:var(--accent-purple); margin-bottom:16px;"></i>
-        <h3 style="margin-bottom:8px;">Student & Parent</h3>
-        <p style="color:var(--text-muted); font-size:0.9rem;">Independent B2C tracking, academic reports, and fee history.</p>
+    </section>
+
+    <!-- 3. STUDENT VIEW -->
+    <section id="studentView" style="display: none;">
+      <div style="margin-bottom: 24px;">
+        <span style="color: var(--accent-purple); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Student Gamified Portal</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 4px;">Good morning, Scholar. Your momentum is building!</h1>
       </div>
-    </div>
+
+      <!-- XP Bar Card -->
+      <div class="glass-panel" style="padding: 24px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <span style="background: var(--accent-cyan); color: black; padding: 4px 10px; border-radius: 12px; font-weight: bold; font-size: 0.8rem;">LEVEL 7</span>
+          <h2 style="margin: 8px 0 0 0;">Quantum Scholar • Top 4%</h2>
+        </div>
+        <div style="text-align: right;">
+          <h3 style="color: var(--accent-cyan); margin: 0;">8,450 XP</h3>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">Next rank at 10,000 XP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PARENT VIEW -->
+    <section id="parentView" style="display: none;">
+      <div style="margin-bottom: 24px;">
+        <span style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Parent Dashboard</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 4px;">Aarav is on track — and you're fully in the loop.</h1>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div class="glass-panel" style="padding: 24px;">
+          <h3>Fee & Financial Management</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Quarter III Invoice #SA-26-Q3-1184</p>
+          
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem;">
+            <span>Tuition Fee:</span> <strong>₹19,800</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem;">
+            <span>STEM Lab & Activity:</span> <strong>₹3,250</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-glass); padding-top: 12px; margin-top: 12px; font-size: 1.1rem;">
+            <span>Total Payable:</span> <strong style="color: var(--accent-cyan);">₹27,950</strong>
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <button class="btn-primary" style="flex: 1;" onclick="alert('Redirecting to secure payment gateway...')">Pay Securely</button>
+            <button class="btn-outline" onclick="generateRealFeeReceipt('Aarav Sharma', '27,950', 'SA-26-Q3-1184')"><i class="fa-solid fa-download"></i> Receipt PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Ambient Audio Toggle -->
-  <button class="audio-toggle-btn" id="audioToggleBtn" onclick="toggleAmbientAudio()">
-    <i class="fa-solid fa-volume-xmark" id="audioIcon"></i> Ambient sound: OFF
-  </button>
-  <audio id="bgAudio" loop preload="none">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Principal Guide Modal -->
-  <div class="modal-overlay" id="guide-modal">
-    <div class="glass-panel modal-content">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-        <h2><i class="fa-solid fa-compass" style="color:var(--accent-cyan);"></i> Principal Daily Operations Guide</h2>
-        <i class="fa-solid fa-xmark" style="cursor:pointer; font-size:1.4rem;" onclick="closeModal('guide-modal')"></i>
-      </div>
-      <div style="color:var(--text-muted); font-size:0.95rem; line-height:1.6;">
-        <p><strong>1. Morning Attendance Sync:</strong> Review real-time classroom check-ins at 09:00 AM.</p>
-        <p style="margin-top:10px;"><strong>2. Financial Audit:</strong> Check pending fee notifications and auto-generate receipts in PDF format.</p>
-        <p style="margin-top:10px;"><strong>3. Bulk Actions:</strong> Upload new batch admissions via CSV/Excel template under Admin settings.</p>
-      </div>
-    </div>
+  <!-- FLOATING PERSPECTIVE ROLE SWITCHER BAR (LOVABLE STYLE) -->
+  <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(15, 22, 36, 0.92); backdrop-filter: blur(16px); border: 1px solid var(--border-neon); padding: 8px 16px; border-radius: 30px; display: flex; align-items: center; gap: 12px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <span style="color: var(--text-muted); font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">VIEW AS</span>
+    <button class="role-btn" onclick="switchPortalView('student')" style="background: transparent; border: none; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer;">Student</button>
+    <button class="role-btn" onclick="switchPortalView('teacher')" style="background: transparent; border: none; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer;">Teacher</button>
+    <button class="role-btn" onclick="switchPortalView('parent')" style="background: transparent; border: none; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer;">Parent</button>
+    <button class="role-btn" onclick="switchPortalView('admin')" style="background: var(--accent-cyan); border: none; color: black; font-weight: bold; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer;">Admin</button>
   </div>
 
-  <!-- Founders Modal -->
-  <div class="modal-overlay" id="founders-modal">
-    <div class="glass-panel modal-content">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-        <h2><i class="fa-solid fa-users" style="color:var(--accent-cyan);"></i> StepUp OS Founders</h2>
-        <i class="fa-solid fa-xmark" style="cursor:pointer; font-size:1.4rem;" onclick="closeModal('founders-modal')"></i>
-      </div>
-      <div style="display:grid; gap:16px;">
-        <div><strong>Darsh</strong> — Product Architecture & UI Design</div>
-        <div><strong>Mehtaab</strong> — Backend Infrastructure & Cloud Architecture</div>
-        <div><strong>Twisha</strong> — Operations & Strategy</div>
-      </div>
-      <p style="margin-top:20px; font-size:0.85rem; color:var(--text-muted);">Contact: stepup.user.contact@gmail.com</p>
-    </div>
-  </div>
-
-  <script style="display:none;">
-    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    
-    let audioPlaying = false;
-    function toggleAmbientAudio() {
-      const audio = document.getElementById('bgAudio');
-      const btn = document.getElementById('audioToggleBtn');
-      const icon = document.getElementById('audioIcon');
+  <!-- AUTH MODAL FOR GOOGLE SIGN-IN -->
+  <div class="modal-overlay" id="auth-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 2000;">
+    <div class="glass-panel" style="padding: 32px; width: 380px; text-align: center; position: relative;">
+      <i class="fa-solid fa-xmark" style="position: absolute; top: 16px; right: 16px; cursor: pointer; font-size: 1.2rem;" onclick="document.getElementById('auth-modal').style.display='none'"></i>
+      <h2 style="margin-bottom: 8px;">Portal Access</h2>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Enter your registered Gmail ID to auto-route to your role.</p>
       
-      if (!audioPlaying) {
-        audio.volume = 0.01; // 1% ambient volume
-        audio.play();
-        btn.innerHTML = `<i class="fa-solid fa-volume-high"></i> Ambient sound: ON (1%)`;
-        btn.style.borderColor = 'var(--accent-cyan)';
-        audioPlaying = true;
-      } else {
-        audio.pause();
-        btn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i> Ambient sound: OFF`;
-        btn.style.borderColor = 'var(--border-glass)';
-        audioPlaying = false;
-      }
-    }
-  </script>
+      <input type="email" id="loginEmail" placeholder="name@gmail.com" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 8px; color: white; margin-bottom: 16px;">
+      
+      <button class="btn-primary" style="width: 100%; padding: 12px;" onclick="handleStepUpLogin(document.getElementById('loginEmail').value); document.getElementById('auth-modal').style.display='none';">Sign In with Google / Email</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
